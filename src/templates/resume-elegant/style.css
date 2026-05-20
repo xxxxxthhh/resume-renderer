@@ -10,7 +10,7 @@
 
 @page {
   size: A4;
-  margin: 13mm 15mm 14mm;
+  margin: 9mm 11mm 10mm;
 }
 
 * {
@@ -26,8 +26,8 @@ body {
   color: var(--ink);
   background: var(--preview);
   font-family: "Avenir Next", Avenir, "Segoe UI", system-ui, sans-serif;
-  font-size: 10.5pt;
-  line-height: 1.38;
+  font-size: 9.35pt;
+  line-height: 1.27;
 }
 
 a {
@@ -41,29 +41,29 @@ a {
   width: min(100%, 210mm);
   min-height: 297mm;
   margin: 0 auto;
-  padding: 13mm 15mm 14mm;
+  padding: 9mm 11mm 10mm;
   background: var(--paper);
 }
 
 .resume-header {
   border-bottom: 1pt solid var(--rule);
-  padding-bottom: 7mm;
-  margin-bottom: 5.5mm;
+  padding-bottom: 4.4mm;
+  margin-bottom: 3.4mm;
 }
 
 .resume-header h1 {
   margin: 0;
   color: var(--ink);
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 25pt;
+  font-size: 22pt;
   font-weight: 500;
   line-height: 1.04;
 }
 
 .resume-lead {
-  margin-top: 3mm;
+  margin-top: 2mm;
   color: var(--muted);
-  font-size: 9.4pt;
+  font-size: 8.7pt;
 }
 
 .resume-lead p {
@@ -72,13 +72,13 @@ a {
 
 .resume-section {
   break-inside: avoid-page;
-  margin-top: 4.5mm;
+  margin-top: 2.7mm;
 }
 
 .resume-section h2 {
-  margin: 0 0 2.2mm;
+  margin: 0 0 1.4mm;
   color: var(--accent);
-  font-size: 8.6pt;
+  font-size: 7.9pt;
   font-weight: 700;
   letter-spacing: 0;
   text-transform: uppercase;
@@ -99,24 +99,24 @@ h4 {
 }
 
 h3 {
-  margin: 3.2mm 0 1mm;
-  font-size: 10.4pt;
-  line-height: 1.2;
+  margin: 2mm 0 0.6mm;
+  font-size: 9.45pt;
+  line-height: 1.14;
 }
 
 p {
-  margin: 0 0 2.4mm;
+  margin: 0 0 1.5mm;
 }
 
 ul,
 ol {
-  margin: 1.2mm 0 2.4mm 4.8mm;
+  margin: 0.7mm 0 1.4mm 4mm;
   padding: 0;
 }
 
 li {
-  margin: 0.6mm 0;
-  padding-left: 0.8mm;
+  margin: 0.35mm 0;
+  padding-left: 0.5mm;
   break-inside: avoid;
 }
 
@@ -125,8 +125,8 @@ strong {
 }
 
 blockquote {
-  margin: 2mm 0;
-  padding-left: 3mm;
+  margin: 1.5mm 0;
+  padding-left: 2.4mm;
   border-left: 1.5pt solid var(--rule);
   color: var(--muted);
 }
@@ -134,7 +134,7 @@ blockquote {
 hr {
   border: 0;
   border-top: 1pt solid var(--rule);
-  margin: 4mm 0;
+  margin: 2.5mm 0;
 }
 
 code {

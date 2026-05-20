@@ -20,7 +20,7 @@ async function createProject(): Promise<string> {
   );
   await writeFile(
     path.join(root, "inputs/letter.md"),
-    "# Ada Lovelace\n\nMay 20, 2026\n\n## OpenAI\n\nHello.",
+    "# Ada Lovelace\n\nMay 20, 2026\n\n## Example Team\n\nHello.",
     "utf8",
   );
   await writeFile(

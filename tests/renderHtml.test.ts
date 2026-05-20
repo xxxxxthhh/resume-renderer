@@ -36,7 +36,7 @@ describe("renderHtml", () => {
 
 May 20, 2026
 
-## OpenAI
+## Example Team
 
 Dear hiring team,
 
@@ -45,7 +45,7 @@ I build careful developer tools.
 
     expect(html).toContain('class="letter-document"');
     expect(html).toContain("<h1>Ada Lovelace</h1>");
-    expect(html).toContain('<section class="letter-section" id="openai">');
+    expect(html).toContain('<section class="letter-section" id="example-team">');
     expect(html).toContain("Dear hiring team");
   });
 

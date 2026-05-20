@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Build a small open-source tool that helps developers keep application materials in Markdown, use AI to review and adapt them responsibly, and export polished recruiter-ready PDFs.
+Build a small open-source tool that helps developers keep application materials in Markdown and export polished recruiter-ready PDFs.
 
 The project should not be "yet another Markdown-to-PDF wrapper." Its reason to exist is the workflow around the renderer:
 
@@ -11,7 +11,7 @@ The project should not be "yet another Markdown-to-PDF wrapper." Its reason to e
 - Generate human-reviewable suggestions instead of silently rewriting the source.
 - Produce elegant HTML/PDF outputs once the human has accepted the changes.
 
-The current implementation has completed the rendering layer. The OpenAI-powered review layer is the next planned slice.
+The current implementation has completed the rendering layer. An optional AI-powered review layer is a possible future slice.
 
 ## Implementation Status
 
@@ -27,7 +27,7 @@ The current implementation has completed the rendering layer. The OpenAI-powered
 
 ### Planned next
 
-- OpenAI API integration for job-description review.
+- Optional OpenAI API integration for job-description review.
 - Structured JSON and Markdown review reports.
 - Optional cover-letter drafting from resume plus job description.
 - Review report template.
@@ -79,7 +79,7 @@ The current implementation has completed the rendering layer. The OpenAI-powered
 Use a Node.js and TypeScript CLI with three clear layers:
 
 1. Markdown document parsing and rendering.
-2. OpenAI-powered application analysis.
+2. Optional AI-powered application analysis.
 3. HTML/PDF output generation.
 
 ```text
@@ -119,14 +119,14 @@ resume-renderer/
     design.md
 ```
 
-The `ai/` and `report-elegant/` pieces are planned. The renderer, Markdown parser, templates, and preview server are implemented.
+The `ai/` and `report-elegant/` pieces are planned optional extensions. The renderer, Markdown parser, templates, and preview server are implemented.
 
 ## Workflow
 
 ```text
 Markdown resume + optional cover letter + job description
   -> parse into a small document model
-  -> run OpenAI application review
+  -> run AI application review
   -> write structured report and suggested edits
   -> human reviews and edits Markdown
   -> render HTML with chosen template
@@ -152,7 +152,7 @@ Playwright is the preferred PDF backend because it gives strong CSS support, cli
 
 ## OpenAI Integration
 
-The OpenAI API should be used for structured, auditable outputs rather than opaque free-form rewriting.
+If implemented, the OpenAI API should be used for structured, auditable outputs rather than opaque free-form rewriting.
 
 ### Application Review Output
 
@@ -165,7 +165,7 @@ The review command should produce JSON plus a readable Markdown report:
     {
       "keyword": "developer experience",
       "status": "strong",
-      "evidence": ["AI Coding Workflow / PLAN.md Harness"]
+      "evidence": ["Markdown Application Renderer"]
     }
   ],
   "missingEvidence": [
@@ -177,16 +177,16 @@ The review command should produce JSON plus a readable Markdown report:
   ],
   "credibilityRisks": [
     {
-      "text": "Built with Codex",
-      "risk": "May sound like long-term usage if evidence is thin",
-      "saferWording": "Used Codex in recent repo-aware local work"
+      "text": "Built developer tools at scale",
+      "risk": "May sound broad if evidence is thin",
+      "saferWording": "Built tested TypeScript CLIs for documentation and publishing workflows"
     }
   ],
   "editSuggestions": [
     {
       "document": "resume",
       "section": "Selected Projects",
-      "suggestion": "Move the public artifact before private projects"
+      "suggestion": "Move the strongest public artifact before private or less-verifiable projects"
     }
   ]
 }
@@ -232,7 +232,7 @@ Use a small config file so the renderer is reusable. Public examples should poin
 }
 ```
 
-The current renderer reads the `documents` section. The `analysis` section is reserved for the next OpenAI review slice.
+The current renderer reads the `documents` section. The `analysis` section is reserved for the next AI review slice.
 
 A private local config can point to real application materials outside the public repository, but it should be ignored by git.
 
@@ -313,10 +313,10 @@ Once public, the renderer MVP can be described as:
 
 > Built an open-source Markdown-to-PDF application-materials renderer with TypeScript, print CSS, and Playwright PDF export, turning Markdown resumes and cover letters into polished recruiter-ready PDFs with inspectable HTML previews.
 
-After the OpenAI review slice lands, the stronger story becomes:
+After an optional AI review slice lands, the stronger story becomes:
 
 > Built an open-source AI-assisted application materials workflow with TypeScript, OpenAI API analysis, structured Markdown reports, print CSS, and Playwright PDF export, helping developers compare resumes against job descriptions and generate polished recruiter-ready PDFs without losing human control over factual claims.
 
 ## Timing
 
-This project should not block application submission. It belongs to the post-submission proof-building track and can later become a public GitHub pin.
+This project can stand alone as a public renderer project. The optional AI review layer should be added only after the rendering layer remains simple and reliable.

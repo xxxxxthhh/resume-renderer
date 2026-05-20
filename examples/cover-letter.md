@@ -2,7 +2,7 @@
 
 example.candidate@example.com | San Francisco, CA | May 20, 2026
 
-## OpenAI
+## Example AI Platform Team
 
 Dear hiring team,
 

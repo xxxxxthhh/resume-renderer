@@ -1,8 +1,10 @@
 # Resume Renderer
 
-Rendering layer for an AI-assisted application-materials workflow.
+Markdown-to-HTML/PDF renderer for polished application materials.
 
-This standalone project keeps source documents in Markdown and produces elegant recruiter-ready HTML/PDF outputs through a repeatable, reviewable toolchain. The current version implements the renderer layer; the next slice will add OpenAI-powered job-description review.
+Resume Renderer keeps resumes and cover letters in plain Markdown, then renders them into clean HTML previews and recruiter-ready PDFs. It is designed for people who want version-controlled application materials without giving up polished output.
+
+The current version implements the rendering layer. A later slice may add optional AI-assisted job-description review, but the renderer works without any API keys.
 
 ## Current Status
 
@@ -23,11 +25,12 @@ Planned AI layer:
 
 See [docs/design.md](docs/design.md) for the full design direction.
 
-## Setup
+## Quick Start
 
 ```bash
 npm install
 npx playwright install chromium
+npm run render
 ```
 
 Playwright needs a local Chromium browser for PDF export. Unit tests do not require the browser, but `npm run render` does.
@@ -46,6 +49,8 @@ Generated files:
 - `dist/example-resume.pdf`
 - `dist/example-cover-letter.html`
 - `dist/example-cover-letter.pdf`
+
+`dist/` is ignored by git so generated documents do not get committed by accident.
 
 ## Preview
 
@@ -75,11 +80,13 @@ The default config file is `resume-renderer.config.json`.
 
 Relative paths resolve from the config file location. Outputs are overwritten on each render.
 
-To render private application materials, create a separate local config and point it at files outside this public repo:
+To render your own application materials, create a separate local config and point it at files outside this repo:
 
 ```bash
-npm run render -- --config ../private-materials/resume-renderer.config.json
+npm run render -- --config ../my-application-materials/resume-renderer.config.json
 ```
+
+Keep local configs and generated personal PDFs out of git if they contain contact details, job descriptions, or other non-public material.
 
 ## Markdown Contract
 
@@ -94,3 +101,10 @@ npm test
 npm run typecheck
 git diff --check
 ```
+
+## Privacy Notes
+
+- Public examples use fictional names, emails, companies, and links.
+- Raw HTML in Markdown is escaped instead of rendered.
+- Generated HTML/PDF output is ignored by default.
+- API keys, local configs, and personal application materials should stay outside this repository.

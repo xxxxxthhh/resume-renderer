@@ -1,0 +1,131 @@
+:root {
+  color-scheme: light;
+  --ink: #24211f;
+  --muted: #64605a;
+  --rule: #d9d1c4;
+  --accent: #5e4c2f;
+  --paper: #fffdf9;
+  --preview: #f3efe7;
+}
+
+@page {
+  size: A4;
+  margin: 18mm 18mm 19mm;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--preview);
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--preview);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 11.2pt;
+  line-height: 1.58;
+}
+
+a {
+  color: inherit;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 0.7pt;
+  text-underline-offset: 2pt;
+}
+
+.letter-document {
+  width: min(100%, 210mm);
+  min-height: 297mm;
+  margin: 0 auto;
+  padding: 18mm 18mm 19mm;
+  background: var(--paper);
+}
+
+.letter-header {
+  border-bottom: 1pt solid var(--rule);
+  margin-bottom: 9mm;
+  padding-bottom: 6mm;
+}
+
+.letter-header h1 {
+  margin: 0;
+  font-size: 22pt;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.letter-lead {
+  margin-top: 3mm;
+  color: var(--muted);
+  font-family: "Avenir Next", Avenir, "Segoe UI", system-ui, sans-serif;
+  font-size: 9.6pt;
+  line-height: 1.35;
+}
+
+.letter-lead p {
+  margin: 0;
+}
+
+.letter-section {
+  break-inside: auto;
+}
+
+.letter-section h2 {
+  margin: 0 0 4mm;
+  color: var(--accent);
+  font-family: "Avenir Next", Avenir, "Segoe UI", system-ui, sans-serif;
+  font-size: 9pt;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+h2,
+h3 {
+  break-after: avoid;
+}
+
+p {
+  margin: 0 0 4mm;
+}
+
+ul,
+ol {
+  margin: 2mm 0 4mm 6mm;
+  padding: 0;
+}
+
+li {
+  margin: 1mm 0;
+}
+
+blockquote {
+  margin: 4mm 0;
+  padding-left: 4mm;
+  border-left: 1.5pt solid var(--rule);
+  color: var(--muted);
+}
+
+@media screen {
+  .letter-document {
+    margin: 20px auto;
+    box-shadow: 0 12px 40px rgb(36 33 31 / 10%);
+  }
+}
+
+@media print {
+  html,
+  body,
+  .letter-document {
+    width: auto;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    background: white;
+    box-shadow: none;
+  }
+}

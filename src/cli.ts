@@ -1,6 +1,9 @@
 #!/usr/bin/env node
 
+import path from "node:path";
+
 import { renderDocuments } from "./render/renderDocuments";
+import { startStaticServer } from "./utils/server";
 
 export const DEFAULT_CONFIG_PATH = "resume-renderer.config.json";
 export const DEFAULT_PREVIEW_PORT = 4173;
@@ -91,7 +94,37 @@ async function main(): Promise<void> {
     return;
   }
 
-  throw new Error("Preview command is not wired yet.");
+  const results = await renderDocuments({
+    configPath: command.configPath,
+    documentId: command.documentId,
+  });
+  const previewRoot = commonDirectory(results.map((result) => path.dirname(result.htmlPath)));
+  const server = await startStaticServer(previewRoot, command.port);
+
+  console.log(`Preview server running at ${server.url}`);
+  console.log(`Serving ${previewRoot}`);
+}
+
+function commonDirectory(directories: string[]): string {
+  if (directories.length === 0) {
+    return process.cwd();
+  }
+
+  const [firstDirectory, ...rest] = directories.map((directory) => path.resolve(directory));
+  const commonParts = firstDirectory.split(path.sep);
+
+  for (const directory of rest) {
+    const parts = directory.split(path.sep);
+    let index = 0;
+
+    while (index < commonParts.length && commonParts[index] === parts[index]) {
+      index += 1;
+    }
+
+    commonParts.length = index;
+  }
+
+  return commonParts.join(path.sep) || path.sep;
 }
 
 if (process.argv[1] && import.meta.url === new URL(process.argv[1], "file://").href) {

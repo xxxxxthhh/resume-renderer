@@ -76,6 +76,17 @@ Markdown source
 
 Playwright is the preferred PDF backend because it gives strong CSS support, clickable links, selectable text, and realistic print layout. The implementation should pin the dependency and document the browser install step.
 
+## MVP Decisions
+
+- The default config file is `resume-renderer.config.json`.
+- Public example inputs live under `examples/` so the repository can be published without private application material.
+- Relative paths in config resolve from the config file directory.
+- Generated HTML and PDF outputs are overwritten on each render.
+- The supported Markdown subset is headings, paragraphs, links, emphasis, strong text, ordered and unordered lists, nested lists, blockquotes, horizontal rules, and fenced code blocks.
+- Raw HTML is escaped instead of rendered.
+- The first H1 is the document title; content before the first H2 is lead/contact content; each H2 starts a top-level section.
+- `preview` is an MVP static server for generated `dist/` files, not a live-reload browser app.
+
 ## Configuration
 
 Use a small config file so the renderer is reusable and the application materials stay outside the renderer project.
@@ -139,7 +150,7 @@ resume-renderer preview
 
 The MVP is acceptable when:
 
-- Current resume and cover letter render to HTML and PDF.
+- Example resume and cover letter render to HTML and PDF.
 - PDF text is selectable and links are clickable.
 - No raw Markdown syntax leaks into the output.
 - Page breaks do not split headings from their first content block.
@@ -170,4 +181,3 @@ Before publishing, audit the repo for:
 Once public, this project can be described as:
 
 > Built an open-source Markdown-to-PDF application-materials renderer with TypeScript, print CSS, and Playwright PDF export, turning Markdown resumes and cover letters into polished recruiter-ready PDFs with inspectable HTML previews.
-

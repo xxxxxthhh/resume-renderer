@@ -2,7 +2,6 @@ import { Marked, type Token, type Tokens } from "marked";
 
 import type {
   MarkdownOutlineItem,
-  MarkdownSection,
   ParsedMarkdownDocument,
 } from "./documentModel";
 import { escapeHtml, slugify } from "../utils/html";
@@ -31,7 +30,7 @@ export function parseMarkdown(markdown: string): ParsedMarkdownDocument {
 
   const title = firstContentToken.text.trim();
   const leadTokens: Token[] = [];
-  const sections: MarkdownSection[] = [];
+  const sections: MutableSection[] = [];
   const outline: MarkdownOutlineItem[] = [];
   let currentSection: MutableSection | undefined;
   let skippedTitle = false;

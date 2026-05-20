@@ -3,9 +3,6 @@
   "version": "0.1.0",
   "description": "Markdown-to-PDF renderer for polished application materials.",
   "type": "module",
-  "bin": {
-    "resume-renderer": "src/cli.ts"
-  },
   "scripts": {
     "render": "tsx src/cli.ts render",
     "render:resume": "tsx src/cli.ts render --document resume",

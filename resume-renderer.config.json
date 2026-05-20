@@ -1,0 +1,18 @@
+{
+  "documents": [
+    {
+      "id": "resume",
+      "input": "examples/resume.md",
+      "template": "resume-elegant",
+      "html": "dist/example-resume.html",
+      "pdf": "dist/example-resume.pdf"
+    },
+    {
+      "id": "cover-letter",
+      "input": "examples/cover-letter.md",
+      "template": "letter-elegant",
+      "html": "dist/example-cover-letter.html",
+      "pdf": "dist/example-cover-letter.pdf"
+    }
+  ]
+}

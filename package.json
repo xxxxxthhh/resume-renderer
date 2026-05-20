@@ -1,0 +1,24 @@
+{
+  "name": "resume-renderer",
+  "version": "0.1.0",
+  "description": "Rendering layer for an AI-assisted application-materials workflow.",
+  "type": "module",
+  "scripts": {
+    "render": "tsx src/cli.ts render",
+    "render:resume": "tsx src/cli.ts render --document resume",
+    "render:cover-letter": "tsx src/cli.ts render --document cover-letter",
+    "preview": "tsx src/cli.ts preview",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "marked": "^15.0.7",
+    "playwright": "^1.49.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  }
+}

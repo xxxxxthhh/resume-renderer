@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+import { renderDocuments } from "./render/renderDocuments";
+
 export const DEFAULT_CONFIG_PATH = "resume-renderer.config.json";
 export const DEFAULT_PREVIEW_PORT = 4173;
 
@@ -74,7 +76,22 @@ function readFlagValue(args: string[], index: number, flag: string): string {
 
 async function main(): Promise<void> {
   const command = parseCliArgs(process.argv.slice(2));
-  throw new Error(`Command "${command.command}" is not wired yet.`);
+
+  if (command.command === "render") {
+    const results = await renderDocuments({
+      configPath: command.configPath,
+      documentId: command.documentId,
+    });
+
+    for (const result of results) {
+      console.log(`Rendered ${result.id}`);
+      console.log(`  HTML: ${result.htmlPath}`);
+      console.log(`  PDF:  ${result.pdfPath}`);
+    }
+    return;
+  }
+
+  throw new Error("Preview command is not wired yet.");
 }
 
 if (process.argv[1] && import.meta.url === new URL(process.argv[1], "file://").href) {
